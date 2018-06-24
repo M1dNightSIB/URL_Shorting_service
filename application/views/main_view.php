@@ -19,7 +19,12 @@
             var regexp = /(https?:\/\/)?(www\.)?([-а-яa-z0-9_\.]{2,}\.)(рф|[a-z]{2,6})((\/[-а-яa-z0-9_]{1,})?\/?([a-z0-9_-]{2,}\.[a-z]{2,6})?(\?[a-z0-9_]{2,}=[-0-9]{1,})?((\&[a-z0-9_]{2,}=[-0-9]{1,}){1,})?)/i;
             var user_url = $("#nice_input").val();
             var validate = regexp.test(user_url);
-
+            var regexp2 = /(https?:\/\/)/i
+            
+            if(!regexp2.test(user_url)){
+                user_url = prepare_link(user_url);
+            }
+            
             if(validate){
                 $.ajax(
                   {
@@ -41,6 +46,10 @@
         function add_text(id, text){
             $(id).text(text);
             $(id).attr("href", text);
+        }
+
+        function prepare_link(url){
+            return "http://" + url;
         }
 	</script>
 </head>
