@@ -6,13 +6,28 @@
 */
 class Route
 {
+	private $db;
 	static function start()
 	{
+		include 'application/models/stupid_model.php';
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
+		
 
+		if($routes[1] == "practic.site"){
+			$db = new Model_Main();
+			$url = $db->getUrl($routes[2]);
+			//echo "$url";
+			//exit();
+			if($url != NULL){
+				header("Location: $url");
+				exit();
+			}else{
+				Route::ErrorPage404();
+			}
+		}
 		// получаем имя контроллера
 		if ( !empty($routes[1]) )
 		{	
@@ -22,7 +37,7 @@ class Route
 		// получаем имя экшена
 		if ( !empty($routes[2]) )
 		{
-			$action_name = $routes[2];
+			$action_name = $routes[2];	
 		}
 		// добавляем префиксы
 		$model_name = 'Model_'.$controller_name;
@@ -33,9 +48,7 @@ class Route
 		echo "Controller: $controller_name <br>";
 		echo "Action: $action_name <br>";
 		*/
-
 		// подцепляем файл с классом модели (файла модели может и не быть)
-
 		$model_file = strtolower($model_name).'.php';
 		$model_path = "application/models/".$model_file;
 		if(file_exists($model_path))

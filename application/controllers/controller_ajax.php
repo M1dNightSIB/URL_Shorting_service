@@ -1,5 +1,5 @@
 <?php
-include '../models/model_main.php';
+include '../models/stupid_model.php';
 
 $domen = 'practic.site';
 $newUrl = NULL;
