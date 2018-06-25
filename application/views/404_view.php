@@ -1,4 +1,16 @@
-<h1>404</h1>
-<p>
-<img src="/images/404.png">
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <div>
+        <h1>Страница не найдена</h1>
+        <img src="/images/404.png" width="380" height="170">
+    </div>
+</body>
+</html>
+
+
