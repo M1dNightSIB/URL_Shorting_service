@@ -34,12 +34,14 @@ class Model_Main
                 $stmt->bind_param('ss', $url, $key);
 				$stmt->execute();
 				$stmt->close();
+				$res = $this->mySqli->query("CREATE UNIQUE INDEX $this->fullUrlField ON
+											$this->table($this->fullUrlField)");
                 return $key;
             } else {
 				$error = mysqli_error($this->mySqli);
 				$stmt->close();
                 return $error;
-            }
+			}
 	}
 
 	public function getUrl($key)// get URL on his key from DB 
