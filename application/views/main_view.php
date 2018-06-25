@@ -55,7 +55,7 @@
 </head>
 <body>
     <div id="footer" >
-        <input id="nice_input" type="url" value="Your URL...">
+        <input id="nice_input" type="url" required placeholder="Your URL...">
         <a href="#" class="button7" onclick=send_url()>Reduce</a>
     </div>
     <div>
